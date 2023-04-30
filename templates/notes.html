@@ -1,0 +1,9 @@
+{% for note in notes %}
+<h2>{{ note.title }}</h2>
+<p>{{ note.content }}</p>
+<p style="color:#0000ff">{{ note.theme }}</p>
+<hr>
+{% endfor %}
+<form method="POST" action="{{ url_for('index') }}">
+    <button type="submit">Back</button>
+</form>

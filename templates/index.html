@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+    <title>Notes</title>
+</head>
+<body>
+<h1>Create Note</h1>
+<form action="{{ url_for('notes') }}" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" name="title" id="title"><br>
+    <label for="content">Content:</label>
+    <textarea name="content" id="content"></textarea><br>
+    <label for="theme">Theme:</label>
+    <input type="text" name="theme" id="theme"><br>
+    <button type="submit">Create</button>
+</form>
+<hr>
+<h1>Notes</h1>
+{% for note in notes %}
+<h2>{{ note.title }}</h2>
+<p>{{ note.content }}</p>
+<p style="color:#0000ff">{{ note.theme }}</p>
+<form method="POST" action="{{ url_for('delete_note', note_id=note.id) }}">
+    <button type="submit">Delete Note</button>
+</form>
+<hr>
+{% endfor %}
+</body>
+</html>
